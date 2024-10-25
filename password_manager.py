@@ -31,6 +31,7 @@ def load_key():
 
 # Encrypt the password
 def encrypt_password(password):
+    generate_key()
     key = load_key()
     fernet = Fernet(key)
     encrypted_password = fernet.encrypt(password.encode())
@@ -38,6 +39,7 @@ def encrypt_password(password):
 
 # Decrypt the password
 def decrypt_password(encrypted_password):
+    load_key()
     key = load_key()
     fernet = Fernet(key)
     decrypted_password = fernet.decrypt(encrypted_password).decode()
