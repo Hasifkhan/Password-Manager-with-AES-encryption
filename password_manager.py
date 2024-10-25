@@ -72,13 +72,13 @@ def add_password():
     password = password_entry.get()
     encrypted_password = encrypt_password(password)
     store_password(service, encrypted_password)
-    print(f"Password for {service} stored securely.")
+    
+    listBox.insert(0, f"Password for {service} stored securely.")
 
 
 # Retrieve password from file
 def retrieve_password() -> None:
     service = service_entry.get()
-    print(f"Service: {service}")
     with open("passwords.txt", "r") as file:
         for line in file:
             line = line.strip()  # Remove any extra whitespace or newline characters
